@@ -73,3 +73,11 @@ The aproximation functions and update step of the remaining variables are analog
 
 The following images are results of simulations with timestep $\Delta t = 0.005$ in the time interval $\[0, 10\]$.
 
+<p align="center">
+  <img src="RK_x.jpg" width="350" title="hover text">
+  <img src="RK_theta.jpg" width="350" alt="accessibility text">
+  
+</p>
+<p align="center">
+    Results of the Simulation with initial conditions $(x,x',\theta,\theta') = (0,0,0.15,0)$, of variable $x$ (right), and $\theta$ (left)
+</p>
