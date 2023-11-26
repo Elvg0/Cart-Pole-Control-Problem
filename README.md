@@ -20,4 +20,28 @@ balance.
 
 # Mathematical Statement
 
-Given the Lagrangian of the system, $L(x,x',\theta,\theta')$, 
+Given the Lagrangian of the system, $L(x,x',\theta,\theta')$, which is given by the difference of the kinnetic and potential energy of the system:
+
+$$L(x, x', \theta, \theta '):= \frac{1}{2}(M+m)(x')^2 + mlx'\theta ' \cos{\theta} + \frac{1}{2}ml^2 |\theta ' |^2 - mgl \cos{\theta} $$
+Whose partial derivatives are given by:
+
+$$\frac{\partial L}{\partial \theta} = glm \sin{\theta} - lm\theta ' x'\sin{\theta}$$
+
+$$\frac{d}{dt}\left(\frac{\partial L}{\partial \theta '} \right) = -lm x' \theta '\sin{\theta} +lmx'' \cos{\theta}  + l^2m \theta ''$$
+
+$$\frac{\partial L}{\partial x}=0$$
+
+$$\frac{d}{dt}\left(\frac{\partial L}{\partial x '} \right) = -lm |\theta '|^2\sin{\theta}  + (m+M)x'' +lm \theta\cos{\theta} ''$$
+
+Applying Lagrange's theorem we get:
+
+$$\begin{cases}
+\theta '' = \frac{1}{l} \left( g\sin{\theta}- x'' \cos{\theta} \right)\\
+x'' =  \frac{ml}{(M+m)}\left(- \theta '' \cos{\theta} +|\theta ' |^2 \sin{\theta}\right)
+\end{cases}$$
+
+Now, having the system described by a second order differential equation, we will now 
+
+
+
+
