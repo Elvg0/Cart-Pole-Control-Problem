@@ -9,7 +9,7 @@ problem is challenging because it requires precise control of the cart’s posit
 to maintain the pendulum’s equilibrium.
 
 <p align="center">
-  <img src="cartpole_draw.png" width="250" title="Cart with inverted pendulum system">
+  <img src="cartpole_draw.png" width="300" title="Cart with inverted pendulum system">
 </p>
 
 
@@ -81,3 +81,69 @@ The following images are results of simulations with timestep $\Delta t = 0.005$
 <p align="center">
     Results of the Simulation with initial conditions $(x,x',\theta,\theta') = (0,0,0.15,0)$, of variable $x$ (right), and $\theta$ (left)
 </p>
+
+
+<p align="center">
+  <img src="RK_x2.jpg" width="350" title="hover text">
+  <img src="RK_theta2.jpg" width="350" alt="accessibility text">
+</p>
+<p align="center">
+    Results of the Simulation with initial conditions $(x,x',\theta,\theta') = (0,0.1,1,0)$, of variable $x$ (right), and $\theta$ (left)
+</p>
+
+
+# Linearization
+
+Next, we can consider the control problem associated with the pendulum. In this case, we
+assume that our control u is an external force applied in the x direction on the cart. In
+this case, the equations would be modified using the second law of Newton, and we obtain:
+
+$$\begin{cases}
+\theta '' = \frac{1}{l} \left( g\sin{\theta}- x'' \cos{\theta} \right)\\
+x'' =  \frac{1}{(M+m)}\left(- ml\theta '' \cos{\theta} +ml|\theta ' |^2 \sin{\theta} + u\right)
+\end{cases}$$
+
+If we now introduce the vector of variables $Y = (y_1, y_2, y_3, y_4)^T
+ = (x, x'
+, \theta, \theta'
+)$, the previous equation can be written as a nonlinear ordinary differential system:
+
+$$\frac{d}{dt}Y = F(Y) + G(Y)u$$
+
+Where $F$ and $G$ are as follows:
+
+$$ F(Y) = \begin{cases}
+y_1' = y_2\\
+y_2' = \frac{mly_4^2 \sin{y_3}-mg\sin{y_3}\cos{y_3}}{(M+m(1-\cos^2{y_3}))}\\
+y_3'=y_4\\
+y_4' = \frac{1}{l} \left( g\sin{y_3}- (\frac{mly_4^2 \sin{y_3}-mg\sin{y_3}\cos{y_3}}{(M+m(1-\cos^2{y_3}))} ) \cos{y_3} \right)
+\end{cases}
+\text{  }
+G(Y) = \begin{bmatrix}
+0 \\
+\frac{1}{M+m(1-\cos^2{\theta})}\\
+0\\
+\frac{-\cos{\theta}}{l(M+m(1-\cos^2{\theta}))}
+\end{bmatrix}
+$$
+
+To solve this nonlinear problem, we can use different methods, the most common ones
+involve linearization. Thus, if we linearize the previous system around 0 (since this is our objective
+equilibrium point), we can rewrite the system as follows:
+
+$$\frac{d}{dt}Y = F(0) + DF(0)Y + G(0)u$$
+
+The Jacobian of $F$ at 0 ($DF(0)$) and the vector $G(0)$ are given by:
+
+$$DF(0) = \begin{bmatrix}
+0 & 1 & 0 & 0\\
+0 & 0 & \frac{-gm}{M}& 0\\
+0& 0 &0 & 1\\
+0 & 0 & \frac{Mg+gm}{Ml}&0
+\end{bmatrix}
+\text{   } G(0) = \begin{bmatrix}
+    0 \\
+    \frac{1}{M} \\
+    0 \\
+    -\frac{1}{Ml}
+\end{bmatrix}$$
