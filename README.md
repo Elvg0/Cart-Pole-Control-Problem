@@ -71,5 +71,5 @@ K_{4x} = f1(x_i + \Delta t K_{3x}, v_i + \Delta t K_{3v}, \theta_i+\Delta t K_{3
 The update step for $x$ is given by $x_{i+1} = x_i + \frac{\Delta t}{6} \left( K_{1x} + 2K_{2x} + 2K_{3x} + K_{4x}\right)$.
 The aproximation functions and update step of the remaining variables are analogous.
 
-
+The following images are results of simulations with timestep $\Delta t = 0.005$ in the time interval $\[0, 10\]$.
 
