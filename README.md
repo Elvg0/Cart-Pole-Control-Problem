@@ -147,3 +147,8 @@ $$DF(0) = \begin{bmatrix}
     0 \\
     -\frac{1}{Ml}
 \end{bmatrix}$$
+
+This system, being LTI, is easier to control, and behaves simmilarly to the nonlinear system near 0.
+
+
+
