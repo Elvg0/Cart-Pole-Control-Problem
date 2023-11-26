@@ -40,7 +40,7 @@ $$\begin{cases}
 x'' =  \frac{ml}{(M+m)}\left(- \theta '' \cos{\theta} +|\theta ' |^2 \sin{\theta}\right)
 \end{cases}$$
 
-Now, having the system described by a second order differential equation, we will now 
+Now we have a system of second order ordinary differential equations describing the problem.
 
 
 
