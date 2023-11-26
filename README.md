@@ -133,7 +133,7 @@ equilibrium point), we can rewrite the system as follows:
 
 $$\frac{d}{dt}Y = F(0) + DF(0)Y + G(0)u$$
 
-The Jacobian of $F$ at 0 ($DF(0)$) and the vector $G(0)$ are given by:
+The Jacobian of $F$ at 0 $(DF(0))$ and the vector $G(0)$ are given by:
 
 $$DF(0) = \begin{bmatrix}
 0 & 1 & 0 & 0\\
@@ -150,5 +150,34 @@ $$DF(0) = \begin{bmatrix}
 
 This system, being LTI, is easier to control, and behaves simmilarly to the nonlinear system near 0.
 
+The numerical simulation of the linearized system can be easily done with Euler's method:
 
+$$Y^{n+1} = Y^n + \Delta t \left(DF(0)Y + G(0)u \right)$$
 
+# Open Loop Control
+
+Given the optimal control problem:
+
+$$ \min \begin{cases}
+J(Y,u) =\frac{\alpha_2}{2}|y_3(T)|^2 + \frac{1}{2}\int_{0}^{T} \alpha_1|y_3|^2 +\alpha_3|u|^2 dt  \\
+\text{s.t. } (Y,u) \text{ Solves } Y'
+\end{cases}$$
+
+We can find an open loop control using a gradient method. For this purpose, we will find the adjoint equation and the gradient.
+
+The functional $J$ can be written as $J(y,u) =  \frac{1}{2} \left< Sy(T),y(T) \right> + \frac{1}{2}\int_{0}^{T} \left< Py(s),y(s) \right>+ \left< Qu(s),u(s) \right> ds$, where:
+
+$$P = \begin{bmatrix}
+    0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0 \\
+    0 & 0 & \alpha_1 & 0 \\
+    0 & 0 & 0 & 0
+\end{bmatrix} \text{ ; }
+S = \begin{bmatrix}
+    0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0 \\
+    0 & 0 & \alpha_2 & 0 \\
+    0 & 0 & 0 & 0 \\
+\end{bmatrix} 
+\text{ ; }
+Q = \alpha_3$$
