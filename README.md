@@ -181,3 +181,6 @@ S = \begin{bmatrix}
 \end{bmatrix} 
 \text{ ; }
 Q = \alpha_3$$
+
+
+
